@@ -5,39 +5,42 @@ using UnityEngine.UI;
 
 public class AttackButton : InputButtonValueFacade
 {
-    public override string ButtonKey => "Attack1Button";
-    public override string SpriteLink => "Image7";
-    public override KeyCode ButtonValue  { get => base.ButtonValue = DeffaultKeyKode; protected set => base.ButtonValue = DeffaultKeyKode; }
+    public override string ButtonKey { get => DeffaultButtonKey; protected set => DeffaultButtonKey = value; }
+    public override string SpriteLink { get => DeffaultSpriteLink; protected set => DeffaultSpriteLink = value; }
+
+    public override KeyCode ButtonValue  { get =>  DeffaultKeyKode; protected set =>  DeffaultKeyKode = value; }
     public override Sprite DefaultSprite => base.DefaultSprite;
 
     private KeyCode DeffaultKeyKode = KeyCode.Mouse0;
+
+    private string DeffaultButtonKey = "Attack1Button";
+    private string DeffaultSpriteLink = "/Image7";
     public override void ChangeOfButtonKey(string newbuttonkey)
     {
-        ButtonKey = newbuttonkey;
+        base.ChangeOfButtonKey(newbuttonkey);
     }
 
     public override void ChangeOfButtonValue(KeyCode newButtonValue)
     {
-        DeffaultKeyKode = newButtonValue;
+        base.ChangeOfButtonValue(newButtonValue);
     }
 
     public override void ChangeSpriteLink(string newspriteLink)
     {
-        SpriteLink = newspriteLink;
+        base.ChangeSpriteLink(newspriteLink);
     }
 
     public override void ChangeDeffaultSprite(Sprite newDeffaultSprite)
     {
-        DefaultSprite = newDeffaultSprite;
+        base.ChangeDeffaultSprite(newDeffaultSprite);
     }
 
     public override void LoadSrite(string SpriteLink)
     {
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + SpriteLink);
+        base.LoadSrite(SpriteLink);
     }
     public override void StartFacade()
     {
-        DefaultSprite = gameObject.GetComponent<Image>().sprite;
-        if (transform.gameObject.GetComponentInChildren<Text>()) transform.gameObject.GetComponentInChildren<Text>().text = ButtonValue.ToString();
+        base.StartFacade();
     }
 }

@@ -11,7 +11,7 @@ public class PlayerObject : PlayerObjectFacade
     public override string ObjectsPrefabsPath { get => PlayerObjectsPrefabs; protected set => base.ObjectsPrefabsPath = value; }
     public override string PlayerSpawnPath { get => base.PlayerSpawnPath; protected set => base.PlayerSpawnPath = value; }
 
-    public string PlayerObjectsPrefabs = "/Player";
+    private string PlayerObjectsPrefabs = "/Player";
 
     public override void ChangeSpawnLoadPath(int NewSpawnLoadPath)
     {
@@ -84,13 +84,13 @@ public class PlayerObject : PlayerObjectFacade
     public override void Load(SaveResource LoadResource)
     {
         CurrentPlayerTestInfo.ChangeSaveInfo(LoadResource);
-
+        
         LoadTreatmentStates();
     }
     public override void DeffaultLoad()
     {
         CurrentPlayerTestInfo = new PlayerResource();
-
+        
         LoadTreatmentStates();
         Debug.Log("15136");
     }

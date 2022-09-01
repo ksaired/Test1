@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ExitFromGameInMainMenu : UiFacade
 {
+    private string DeffaultLinkToMainMenu = "MainMenu";
+
     public void ExitinMainMenu()
     {       
         SceneInfo.SaveInfo();
@@ -14,7 +16,7 @@ public class ExitFromGameInMainMenu : UiFacade
     public void LoadMainMenu()
     {
         UIInfo.Save();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(DeffaultLinkToMainMenu);
     }
-        
+       
 }

@@ -7,10 +7,10 @@ public class SpriteInfo : SpriteFacade
 {
     public override string PathToSprite { get => base.PathToSprite; protected set => base.PathToSprite = value; }
     public override string SpriteFacadePath { protected set => DeffaultSpriteFacadePath = value; get => DeffaultSpriteFacadePath; }
-
+         
     [SerializeField]
     private string DeffaultSpriteFacadePath = "Sprite1";
-
+        
     public override void ChangePathToassets(string newPathToSprite)
     {
         base.ChangePathToassets(newPathToSprite);

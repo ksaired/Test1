@@ -7,11 +7,15 @@ public abstract class LoadBackMenuFacade : LoadMenuFacade
     
     public virtual void LoadBackMenu()
     {
-        LoadMenuPath = UIInfo.PreviusMenu[UIInfo.PreviusMenu.Count - 1];
-        
+        string CurrentPreviusMenu = UIInfo.PreviusMenu[UIInfo.PreviusMenu.Count - 1];
+        LoadMenuPath = "/" + CurrentPreviusMenu;
+
+        Debug.Log(LoadMenuLoadPathToKindAssets + LoadPathToKindAssets + LoadMenuPath);
+
         base.LoadFromPrefabs(LoadPathToKindAssets);
 
-        UIInfo.RemoveFromPriviusMenu(LoadMenuPath);
+        UIInfo.RemoveFromPriviusMenu(CurrentPreviusMenu);
+
         base.DestroyCurrentMenu(transform.parent.transform.parent.gameObject);
     }
 

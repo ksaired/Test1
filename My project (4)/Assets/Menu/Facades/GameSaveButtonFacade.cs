@@ -92,14 +92,14 @@ public abstract class GameSaveButtonFacade : LoadMenuFacade
     }
     protected virtual void LoadTextOfCharapterPrefabs()
     {
-        LoadGameObjectPrefab("TextOfCharapter", out GameObject LoadTextCharapterObject);
+        LoadGameObjectPrefab("/TextOfCharapter", out GameObject LoadTextCharapterObject);
 
         TextOfCharapter = Instantiate(LoadTextCharapterObject, transform);
         LoadTextOfCharapter();
     }
     protected virtual void LoadTextTimerPrefab()
     {
-        LoadGameObjectPrefab("TextOfTimer", out GameObject LoadTextTimerObject);
+        LoadGameObjectPrefab("/TextOfTimer", out GameObject LoadTextTimerObject);
 
         TextOfTimer = Instantiate(LoadTextTimerObject, transform);
         LoadTextOfTimer();
@@ -107,7 +107,7 @@ public abstract class GameSaveButtonFacade : LoadMenuFacade
     }
     protected virtual void LoadCheckMenu()
     {
-        LoadMenuPath = "CheckOpenSaveMenu";
+        LoadMenuPath = "/CheckOpenSaveMenu";
 
         UIInfo.ChangeCurrentGameSavePath(DeffaultGameSaveFailePath);
 
@@ -115,7 +115,7 @@ public abstract class GameSaveButtonFacade : LoadMenuFacade
     }
     protected virtual  void MadeNewGameSaveFaile()
     {
-        LoadMenuPath = "CreateNewGameSaveMenu";
+        LoadMenuPath = "/CreateNewGameSaveMenu";
 
         UIInfo.ChangeCurrentGameSavePath(DeffaultGameSaveFailePath);
         UIInfo.ChangeCurrentDeleteMenu(transform.parent.parent.gameObject);
@@ -124,7 +124,7 @@ public abstract class GameSaveButtonFacade : LoadMenuFacade
     }
     protected virtual void LoadChooseMenu()
     {
-        LoadMenuPath = "CheckDeleteGameSaveMenu";
+        LoadMenuPath = "/CheckDeleteGameSaveMenu";
 
         UIInfo.ChangeCurrentGameSavePath(DeffaultGameSaveFailePath);
         
@@ -132,13 +132,13 @@ public abstract class GameSaveButtonFacade : LoadMenuFacade
     }
     protected virtual void LoadSorryMessage()
     {
-       LoadMenuPath = "SorryGameSaveMessage";
+       LoadMenuPath = "/SorryGameSaveMessage";
 
        CreateMenu();
     }
     protected virtual void LoadSaveMenu()
     {
-        LoadMenuPath = "SaveWhetherGameSaveMenu";
+        LoadMenuPath = "/SaveWhetherGameSaveMenu";
 
         UIInfo.ChangeCurrentGameSavePath(DeffaultGameSaveFailePath);
 
@@ -146,7 +146,7 @@ public abstract class GameSaveButtonFacade : LoadMenuFacade
     }
     protected virtual void LoadGameObjectPrefab(string Link, out GameObject LoadGameObject)
     {
-        LoadGameObject = Resources.Load<GameObject>("Prefabs/" + Link);
+        LoadGameObject = Resources.Load<GameObject>(LoadMenuLoadPathToKindAssets + Link);
     }
     protected virtual void LoadGameSaveInfo()
     {

@@ -9,7 +9,7 @@ public class SceneTreatment1 : SceneTreatmentFacade
     public override string GameSaveSceneInfoPath { get => base.GameSaveSceneInfoPath; protected set => base.GameSaveSceneInfoPath = value; }
     public override string DeffaultGameSaveSceneInfoPath { get => DeffaultGameSaveInfoPath; protected set => DeffaultGameSaveInfoPath = value; }
 
-    private string DeffaultGameSaveInfoPath = "SceneTreatment1855877999999";
+    private string DeffaultGameSaveInfoPath = "SceneTreatment18558779999999";
 
     [SerializeField]
     private PlayerSpawner CurrentPlayerSpawner = new PlayerSpawner();

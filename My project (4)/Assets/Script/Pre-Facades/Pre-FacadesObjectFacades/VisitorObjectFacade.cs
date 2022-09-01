@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class VisitorObjectFacade : NPCObjectFacade
 {
     public override NPCResource CurrentNPCInfo { get => CurrentVisitorInfo; set => CurrentVisitorInfo = (VisitorResource)value; }
-    public override string PrefabLoadPath { get => base.PrefabLoadPath; protected set => base.PrefabLoadPath = value; }
+    public override string PrefabLoadPath { get => ObjectFacadePrefabsPath + NPCObjectFacadePrefabsPath + VisitorObjectFacadePrefabsPath; protected set => base.PrefabLoadPath = value; }
 
     public virtual VisitorResource CurrentVisitorInfo { get; set; }
 

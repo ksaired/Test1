@@ -8,11 +8,11 @@ public class LoadButton : LoadMenuFacade
     public override GameObject LoadMenu { get => base.LoadMenu; protected set => base.LoadMenu = value; }
 
     public override string LoadMenuPath { get => base.LoadMenuPath; protected set => base.LoadMenuPath = value; }
-    public override string ObjectPath { get => DeffaultMainMenuPath; protected set => DeffaultMainMenuPath = value; }
+    public override string ObjectPath { get => DeffaultObjectsPath; protected set => DeffaultObjectsPath = value; }
     public override string LoadPathToKindAssets { get => DeffaultLoadPathToKindAssets; protected set => DeffaultLoadPathToKindAssets = value; }
 
-    private string DeffaultLoadPathToKindAssets = "MenuPrefabs";
-    private string DeffaultMainMenuPath = "LoadMenuPath";
+    private string DeffaultLoadPathToKindAssets = UIInfo.GetLinkToAssets("MenuPrefabsLoadPathToKindAssetsPath");
+    private string DeffaultObjectsPath = "LoadMenuPath";
 
     public override void ChangeLoadMenuPath(string newLoadMenuPath)
     {

@@ -8,6 +8,9 @@ public class PlayerResource : Resource
     public override TreatmentOfStatesFacade CurrentMainStateFacade { get => CurrentPlayerTreatmentMainState; protected set => CurrentPlayerTreatmentMainState = (TreatmentOfMainPlayerState)value; }
     public override TreatmentOfStatesFacade CurrentStateFacade { get => CurrentPlayerTreatmentState; protected set => CurrentPlayerTreatmentState = (TreatmentOfPlayerState)value; }
 
+    public override string KindPathToAssetsForResource { get => ResourceKindPathToAssetsForResource + PlayerResourceKindPathToAssetsForResource; protected set => base.KindPathToAssetsForResource = value; }
+    public override string ObjectResourcePathToAssetsForResource { get => PlayerObjectResourcePathToAssetsForResource; protected set => PlayerObjectResourcePathToAssetsForResource = value; }
+
     public PlayerSaveInfo SaveInfo = new PlayerSaveInfo();
 
     public TreatmentOfPlayerState CurrentPlayerTreatmentState = new TreatmentOfPlayerTestStates();
@@ -22,6 +25,10 @@ public class PlayerResource : Resource
     public string PauseMenuLoadPath = "MainPauseMenu";
     
     public bool IsOpenPauseMenu = true;
+
+    protected string PlayerResourceKindPathToAssetsForResource = SceneInfo.GetLinkToAssets("PlayerResourceKindPathToAssetsForResource");
+
+    private string PlayerObjectResourcePathToAssetsForResource = "/PlayerTestObjectAssets";
     public override void ChangeSaveInfo(SaveResource newSaveInfo)
     {
         base.ChangeSaveInfo(newSaveInfo);
@@ -42,6 +49,6 @@ public class PlayerResource : Resource
 
     public override void StartResource()
     {
-        
+       
     }
 }

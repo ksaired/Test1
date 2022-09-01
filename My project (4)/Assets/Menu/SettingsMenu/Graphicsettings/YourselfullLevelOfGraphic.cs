@@ -8,8 +8,11 @@ public class YourselfullLevelOfGraphic : LevelOfOverallGraphic
     public override Sprite DefaultSprite => base.DefaultSprite;
     public override string SpriteLink { protected set => DeffaultSpriteLink = value; get => DeffaultSpriteLink; }
     public override string LevelOf { get => base.DeffaultTypeLevelOfGraphic[3]; }
+    public override string SpriteLoadKindPath { get => LevelOfGraphicSpriteLoadKindPath + LevelOfOverallGraphicLoadKindPath + LevelOfOverallYourselfullGraphicLoadKindPath; protected set => base.SpriteLoadKindPath = value; }
 
-    private string DeffaultSpriteLink = "Image7";
+    protected string LevelOfOverallYourselfullGraphicLoadKindPath = UIInfo.GetLinkToAssets("LevelOfOverallYourselfullGraphicSpriteLoadKindPath");
+
+    private string DeffaultSpriteLink = "/Image7";
     public override void ChangeDefaultSprite(Sprite newSprite)
     {
         DefaultSprite = newSprite;
@@ -27,9 +30,7 @@ public class YourselfullLevelOfGraphic : LevelOfOverallGraphic
 
     public override void LoadSprite(string link)
     {
-        DefaultSprite = gameObject.GetComponent<Image>().sprite;
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + link);
-
+        base.LoadSprite(link);
     }
 
     public override void StartFacade()

@@ -9,7 +9,12 @@ public abstract class Resource : MonoBehaviour
     public virtual TreatmentOfStatesFacade CurrentStateFacade { get; protected set; }
     public virtual TreatmentOfStatesFacade CurrentMainStateFacade { get; protected set; }
         
+    public virtual string KindPathToAssetsForResource { protected set; get; }
+    public virtual string ObjectResourcePathToAssetsForResource { protected set; get; }
+
     public int TestLoadTree = 0;
+
+    protected string ResourceKindPathToAssetsForResource = SceneInfo.GetLinkToAssets("ResourceKindPathToAssetsForResource");
 
     public virtual void ChangeSaveInfo(SaveResource newSaveInfo) 
     {
@@ -28,7 +33,10 @@ public abstract class Resource : MonoBehaviour
     {
         currentSaveInfo.IsTreatmentActive = NewValue;
     }
-
+    public virtual void ChangePathToAssetsForResource(string NewPathToAssetsForResource)
+    {
+        KindPathToAssetsForResource = NewPathToAssetsForResource;
+    }
     public virtual void ChangeTestLoadTree(int NewTestLoadTree)
     {
         TestLoadTree = NewTestLoadTree;

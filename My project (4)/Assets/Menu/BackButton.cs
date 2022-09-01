@@ -9,11 +9,11 @@ public class BackButton : LoadBackMenuFacade
     public override GameObject LoadMenu { get => base.LoadMenu; protected set => base.LoadMenu = value; }
 
     public override string LoadMenuPath { get => base.LoadMenuPath; protected set => base.LoadMenuPath = value; }
-    public override string ObjectPath { get => DeffaultMainMenuPath; protected set => DeffaultMainMenuPath = value; }
+    public override string ObjectPath { get => DeffaultObjectPath; protected set => DeffaultObjectPath = value; }
     public override string LoadPathToKindAssets { get => DeffaultLoadPathToKindAssets; protected set => DeffaultLoadPathToKindAssets = value; }
 
-    private string DeffaultLoadPathToKindAssets = "MenuPrefabs";
-    private string DeffaultMainMenuPath = "BackMenuPath";
+    private string DeffaultLoadPathToKindAssets = UIInfo.GetLinkToAssets("MenuPrefabsLoadPathToKindAssetsPath");
+    private string DeffaultObjectPath = "BackMenuPath";
   
     private SettingSaveInfo settingsSaveInfo = new SettingSaveInfo(new DeffaultSettingsInfo()) ;
     private SaveInformation SaveInfo = new SaveInformation(new DeffaultSaveInfo());
@@ -54,6 +54,7 @@ public class BackButton : LoadBackMenuFacade
 
     public void Exit()
     {
+       
         if (IsHaveChange())
         {
             LoadCheckWhetherSaveChangeMenu();
@@ -110,8 +111,10 @@ public class BackButton : LoadBackMenuFacade
     }
     private void LoadCheckWhetherSaveChangeMenu()
     {
+        LoadPathToKindAssets = UIInfo.GetLinkToAssets("ChooseMenuLoadPathToKindAssetsPath");
+             
         UIInfo.DisactiveAnotherButton();
         UIInfo.ChangeCurrentDeleteMenu(transform.parent.transform.parent.gameObject);
-        LoadFromPrefabs("ChooseMenu");
+        LoadFromPrefabs(LoadPathToKindAssets);
     }
 }

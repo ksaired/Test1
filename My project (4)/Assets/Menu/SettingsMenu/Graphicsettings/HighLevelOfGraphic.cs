@@ -8,8 +8,10 @@ public class HighLevelOfGraphic : LevelOfGraphic
     public override Sprite DefaultSprite => base.DefaultSprite;
     public override string SpriteLink { protected set => DeffaultSpriteLink = value; get => DeffaultSpriteLink; }
     public override string LevelOf { get => base.DeffaultTypeLevelOfGraphic[2]; }
+    public override string SpriteLoadKindPath { get => LevelOfGraphicSpriteLoadKindPath + LevelOfHighGraphicLoadKindPath; protected set => base.SpriteLoadKindPath = value; }
 
-    private string DeffaultSpriteLink = "Image7";
+    protected string LevelOfHighGraphicLoadKindPath = UIInfo.GetLinkToAssets("LevelOfHighGraphicSpriteKindLoadPath");
+    private string DeffaultSpriteLink = "/Image7";
     public override void ChangeDefaultSprite(Sprite newSprite)
     {
         DefaultSprite = newSprite;
@@ -27,9 +29,7 @@ public class HighLevelOfGraphic : LevelOfGraphic
 
     public override void LoadSprite(string link)
     {
-        DefaultSprite = gameObject.GetComponent<Image>().sprite;
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + link);
-
+        base.LoadSprite(link);
     }
 
     public override void StartFacade()

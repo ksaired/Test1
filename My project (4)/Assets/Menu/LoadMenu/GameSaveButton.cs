@@ -22,7 +22,7 @@ public class GameSaveButton : GameSaveButtonFacade
     private string DeffaultObjectPath = "Save1";
 
     private string DeffaultGameSave1Path = "GameSave1";
-    private string DeffaultLoadPathToKindAssets = "ChooseMenu";
+    private string DeffaultLoadPathToKindAssets = UIInfo.GetLinkToAssets("ChooseMenuLoadPathToKindAssetsPath");
 
     public void CheckExist()
     {

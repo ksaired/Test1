@@ -10,6 +10,8 @@ public abstract class LoadMenuFacade : ActiveFacade
     public virtual string LoadMenuPath { protected set; get; }
     public virtual string LoadPathToKindAssets { protected set; get; }
 
+    protected string LoadMenuLoadPathToKindAssets = UIInfo.GetLinkToAssets("LoadMenuLoadPathToKindAssetsPath");
+
     public virtual void ChangeLoadMenuPath(string newLoadMenuPath)
     {
         LoadMenuPath = newLoadMenuPath;
@@ -20,7 +22,7 @@ public abstract class LoadMenuFacade : ActiveFacade
     }
     public virtual void LoadFromPrefabs(string PathToKindAssets)
     {
-        LoadMenu = Resources.Load<GameObject>("Prefabs/" + PathToKindAssets + "/" + LoadMenuPath);
+        LoadMenu = Resources.Load<GameObject>(LoadMenuLoadPathToKindAssets + PathToKindAssets + LoadMenuPath);
         LoadMenu = Instantiate(LoadMenu, LoadMenu.transform.parent);
     }
     public virtual void DestroyCurrentMenu(GameObject CurrentDeleteObject)

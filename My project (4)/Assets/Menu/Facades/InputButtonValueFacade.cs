@@ -12,10 +12,33 @@ public abstract class InputButtonValueFacade : MonoBehaviour
    public virtual string SpriteLink { protected set; get; }
    public virtual Sprite DefaultSprite { protected set; get; }
 
-   public abstract void ChangeOfButtonValue(KeyCode newButtonValue);
-   public abstract void ChangeOfButtonKey(string newbuttonkey);
-   public abstract void ChangeSpriteLink(string newspriteLink);
-   public abstract void LoadSrite(string SpriteLink);
-   public abstract void ChangeDeffaultSprite(Sprite newDeffaultSprite);
-   public abstract void StartFacade();
+   protected string InputButtonValueFacadeSpriteKindPath = UIInfo.GetLinkToAssets("InputButtonValueFacadeSpriteKindPath");
+   public virtual void ChangeOfButtonKey(string newbuttonkey)
+   {
+       ButtonKey = newbuttonkey;
+   }
+
+   public virtual void ChangeOfButtonValue(KeyCode newButtonValue)
+   {
+       ButtonValue = newButtonValue;
+   }
+
+   public virtual void ChangeSpriteLink(string newspriteLink)
+   {
+       SpriteLink = newspriteLink;
+   }
+   public virtual void LoadSrite(string SpriteLink)
+   {
+       gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(InputButtonValueFacadeSpriteKindPath + SpriteLink);
+   }
+   public virtual void ChangeDeffaultSprite(Sprite newDeffaultSprite)
+   {
+        DefaultSprite = newDeffaultSprite;
+   }
+
+   public virtual void StartFacade()
+   {
+      DefaultSprite = gameObject.GetComponent<Image>().sprite;
+      if (transform.gameObject.GetComponentInChildren<Text>()) transform.gameObject.GetComponentInChildren<Text>().text = ButtonValue.ToString();
+   }
 }

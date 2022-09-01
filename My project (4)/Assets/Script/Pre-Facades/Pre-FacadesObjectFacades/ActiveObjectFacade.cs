@@ -15,7 +15,7 @@ public abstract class ActiveObjectFacade : ObjectFacade
         if (CurrentInfo.currentSaveInfo.IsTreatmentActive)
         {
             CurrentInfo = CurrentInfo.CurrentStateFacade.UpdateFacade(CurrentInfo);
-            CurrentInfo = CurrentInfo.CurrentStateFacade.UpdateFacade(CurrentInfo);
+            CurrentInfo = CurrentInfo.CurrentMainStateFacade.UpdateFacade(CurrentInfo);
         }
     }
     

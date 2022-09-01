@@ -230,58 +230,58 @@ public class DeffaultSaveInfo
     };
     public Dictionary<string, string> SpritePath = new Dictionary<string, string>() 
     {
-        {"SpriteOfMainMenu","Image5" },
-        {"SpriteOfLoadGameSaveMenu","Image5" },
-        {"SpriteOfGraphicSettingsMenu","Image6" },
-        {"SpriteOfInputSettingsMenu","Image6" },
-        {"SpriteOfSettingsMenu","Image5" },
-        {"SpriteOfSoundsSettingsMenu","Image5" },
-        {"SpriteOfChooseDeleteGameSaveMenu","Image5" },
-        {"SpriteOfCheckOpenGameSave","Image5" },
-        {"SpriteOfChooseDifficultMenu","Image5" },
-        {"SpriteOfCheckCreateNewGameSaveMenu","Image5" },
-        {"SpriteOfCheckSaveGameSaveMenu","Image6" },
-        {"SpriteOfCheckSaveWhetherChangeMenu","Image5" },
-        {"SpriteOfGameSettingsMenu","Image5" },
-        {"SpriteOfLoadPauseMenu","Image5" },
-        {"SpriteOfSorryGameSaveMessageMenu","Image5" },
-        {"SpriteLoadExitFromGameInMainMenu","Image6" },
-        {"SpriteOfChooseDeleteGameSaveTable","Image7" },
-        {"SpriteOfCheckOpenSaveTable","Image7" },
-        {"SpriteOfChooseOfDifficultTable","Image7" },
-        {"SpriteOfCheckCreateNewGameSaveTable","Image7" },
-        {"SpriteOfCheckSaveGameSaveTable","Image7" },
-        {"SpriteOfCheckSaveWhetherChangeTable","Image7" },
-        {"SpriteOfSorryGameSaveMessageTable","Image7" },
-        {"SpriteLoadExitFromGameInMainMenuTable","Image7" }
+        {"SpriteOfMainMenu","/Image5" },
+        {"SpriteOfLoadGameSaveMenu","/Image5" },
+        {"SpriteOfGraphicSettingsMenu","/Image6" },
+        {"SpriteOfInputSettingsMenu","/Image6" },
+        {"SpriteOfSettingsMenu","/Image5" },
+        {"SpriteOfSoundsSettingsMenu","/Image5" },
+        {"SpriteOfChooseDeleteGameSaveMenu","/Image5" },
+        {"SpriteOfCheckOpenGameSave","/Image5" },
+        {"SpriteOfChooseDifficultMenu","/Image5" },
+        {"SpriteOfCheckCreateNewGameSaveMenu","/Image5" },
+        {"SpriteOfCheckSaveGameSaveMenu","/Image6" },
+        {"SpriteOfCheckSaveWhetherChangeMenu","/Image5" },
+        {"SpriteOfGameSettingsMenu","/Image5" },
+        {"SpriteOfLoadPauseMenu","/Image5" },
+        {"SpriteOfSorryGameSaveMessageMenu","/Image5" },
+        {"SpriteLoadExitFromGameInMainMenu","/Image6" },
+        {"SpriteOfChooseDeleteGameSaveTable","/Image7" },
+        {"SpriteOfCheckOpenSaveTable","/Image7" },
+        {"SpriteOfChooseOfDifficultTable","/Image7" },
+        {"SpriteOfCheckCreateNewGameSaveTable","/Image7" },
+        {"SpriteOfCheckSaveGameSaveTable","/Image7" },
+        {"SpriteOfCheckSaveWhetherChangeTable","/Image7" },
+        {"SpriteOfSorryGameSaveMessageTable","/Image7" },
+        {"SpriteLoadExitFromGameInMainMenuTable","/Image7" }
 
     };
     public Dictionary<string, string> GameSavePath = new Dictionary<string, string>() 
     {
-        {"Save1","GameSave245847773" },
-        {"Save2","GameSave245847774" },
-        {"Save3","GameSave245847775" }
+        {"Save1","GameSave24584777399" },
+        {"Save2","GameSave24584777499" },
+        {"Save3","GameSave24584777599" }
     };
     public Dictionary<string, string> LoadMenuPaths = new Dictionary<string, string>()
     {
-        {"UsuallyBackMenuPath","MainMenu" },
-        {"BackMenuPath","SaveWhetherChange" },
-        {"SaveWhetherChangeMenuPath","MainMenu" },
-        {"SoundsSettingsMenuPath","SoundsSettingsMenu" },
-        {"InputSettingsMenuPath","InputSettingsMenu" },
-        {"GraphicSettingsMenuPath","GraphicSettingsMenu" },
-        {"SettingsMenuPath","SettingsMenu" },
-        {"LoadMenuPath","LoadMenu" },
-        {"LoadPauseMenuPath","LoadPauseMenu" },
-        {"LoadPauseLoadMenuPath","PauseLoadMenu" },
-        {"LoadPauseSaveMenuPath","PauseSaveMenu" },
-        {"GameSettingsMenuPath","GameSettingsMenu" },
-        {"CreateNewGameSaveInfoButtonPath","ChoseOfDifficultMenu" },
-        {"LoadExitFromGameInMainMenuPath","WhetherSaveInformationAndExitFromGame" }
+        {"UsuallyBackMenuPath","/MainMenu" },
+        {"BackMenuPath","/SaveWhetherChange" },
+        {"SaveWhetherChangeMenuPath","/MainMenu" },
+        {"SoundsSettingsMenuPath","/SoundsSettingsMenu" },
+        {"InputSettingsMenuPath","/InputSettingsMenu" },
+        {"GraphicSettingsMenuPath","/GraphicSettingsMenu" },
+        {"SettingsMenuPath","/SettingsMenu" },
+        {"LoadMenuPath","/LoadMenu" },
+        {"LoadPauseMenuPath","/LoadPauseMenu" },
+        {"LoadPauseLoadMenuPath","/PauseLoadMenu" },
+        {"LoadPauseSaveMenuPath","/PauseSaveMenu" },
+        {"GameSettingsMenuPath","/GameSettingsMenu" },
+        {"CreateNewGameSaveInfoButtonPath","/ChoseOfDifficultMenu" },
+        {"LoadExitFromGameInMainMenuPath","/WhetherSaveInformationAndExitFromGame" },
     };
 
 
-    public string LatestLoadedSave = "GameSave245847775";
+    public string LatestLoadedSave = "GameSave24584777599";
 
     public bool IsLoadPlayerSave = false;
 }

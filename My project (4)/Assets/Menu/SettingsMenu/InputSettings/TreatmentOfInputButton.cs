@@ -22,6 +22,7 @@ public class TreatmentOfInputButton : InputSettingsFacade
         }
         else if(IsChooseButton)
         {
+            
             if (currentButton.ButtonValue != currentTreatmenButtonValue)
             {
                 FindPreviusButton(currentButton.ButtonValue);
@@ -51,11 +52,13 @@ public class TreatmentOfInputButton : InputSettingsFacade
         {
             if (i.ButtonValue == currentTreatmenButtonValue)
             {
+
                 i.ChangeOfButtonValue(newValue);
                 i.GetComponent<Image>().sprite = i.DefaultSprite;
+
                 if (i.gameObject.GetComponentInChildren<Text>())
                 {
-                    i.gameObject.GetComponentInChildren<Text>().text = i.ButtonValue.ToString();
+                  i.gameObject.GetComponentInChildren<Text>().text = i.ButtonValue.ToString();
                 }
                 
             }

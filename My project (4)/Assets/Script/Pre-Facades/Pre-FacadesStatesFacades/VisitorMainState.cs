@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class VisitorMainState : VisitorState
 {
-    public override string KindPath { get => StateKindPath + NPCStateKindPath + MainNPCStatePath; protected set => MainNPCStatePath = value; }
+    public override string KindPath { get => StateKindPath + NPCStateKindPath + MainVisitorStatePath; protected set => MainVisitorStatePath = value; }
 
-    protected string MainNPCStatePath = SceneInfo.GetLinkToAssets("MainNPCStatePath");
+    protected string MainVisitorStatePath = SceneInfo.GetLinkToAssets("MainVisitorStatePath");
       
     public override void ChangeKindPath(string NewKindPath)
     {

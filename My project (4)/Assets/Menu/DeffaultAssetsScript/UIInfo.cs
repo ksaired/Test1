@@ -24,10 +24,11 @@ public static class UIInfo
 
     private static DeffaultSaveInfo deffaultSaveInfo = new DeffaultSaveInfo();
     private static DeffaultSettingsInfo deffaultSettingsSaveInfo = new DeffaultSettingsInfo();
+    private static DeffaultMenuLinkToObjectAssets CurrentDeffaultMenuLinkToObjectAssets = new DeffaultMenuLinkToObjectAssets();
 
-    private static string deffaultUIInfoPath = "save.gamessereecv1899988474478";
-    private static string deffultSettingsInfoPath = "settingssave.grafeteecv184478";
-    private static string deffaultCurrentGameSavePath = "GameSave245879999999774478";
+    private static string deffaultUIInfoPath = "save.gamessereecv189998847447899999";
+    private static string deffultSettingsInfoPath = "settingssave.grafeteecv18447899999";
+    private static string deffaultCurrentGameSavePath = "GameSave24587999999977447899999";
    
     public static void StartInfo()
     {
@@ -90,6 +91,20 @@ public static class UIInfo
             CurrentPlayer = newCurrentPlayer;
         }
     }
+
+    public static string GetLinkToAssets(string Key)
+    {
+        string Result = string.Empty;
+
+        if (CurrentDeffaultMenuLinkToObjectAssets.LinksToAssets.TryGetValue(Key, out string value))
+        {
+            Result = value;
+        }
+
+
+        return Result;
+    }
+
     public static void Changefailpath(string newfailpath)
     {
         SaveUIInfoPath = Application.persistentDataPath + newfailpath;

@@ -35,6 +35,8 @@ public abstract class ObjectFacade : MonoBehaviour
     protected virtual void StartTreatmentState()
     {
         CurrentInfo = CurrentInfo.CurrentStateFacade.StartFacade(CurrentInfo);
+        
+       
         CurrentInfo = CurrentInfo.CurrentMainStateFacade.StartFacade(CurrentInfo);
     }
     public abstract void Load(SaveResource LoadResource);

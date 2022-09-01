@@ -25,7 +25,7 @@ public class PlayerLoadTreeState : PlayersState
     public override Resource StartFacade(Resource CurrentInfo)
     {
         this.CurrentInfo = CurrentInfo;
-          
+        
         CurrentPlayerTestInfo.CurrentTree.StartFacade();
 
         return this.CurrentInfo;
@@ -34,9 +34,9 @@ public class PlayerLoadTreeState : PlayersState
     public override Resource UpdateFacade(Resource CurrentInfo)
     {
         this.CurrentInfo = CurrentInfo;
-
+       
         CurrentPlayerTestInfo.CurrentTree.UpdateFacade();
-
+        
         return this.CurrentInfo;
     }
 

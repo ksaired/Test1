@@ -9,7 +9,11 @@ public class MinimalLevelOfGraphic : LevelOfGraphic
     public override string SpriteLink { protected set => DeffaultSpriteLink = value; get => DeffaultSpriteLink; }
     public override string LevelOf { get => base.DeffaultTypeLevelOfGraphic[0]; }
 
-    private string DeffaultSpriteLink = "Image7";
+    public override string SpriteLoadKindPath { get => LevelOfGraphicSpriteLoadKindPath + LevelOfMinimalGraphicLoadKindPath; protected set => base.SpriteLoadKindPath = value; }
+
+    protected string LevelOfMinimalGraphicLoadKindPath = UIInfo.GetLinkToAssets("LevelOfMinimalGraphicSpriteLoadKindPath");
+
+    private string DeffaultSpriteLink = "/Image7";
     public override void ChangeDefaultSprite(Sprite newSprite)
     {
         DefaultSprite = newSprite;
@@ -27,8 +31,7 @@ public class MinimalLevelOfGraphic : LevelOfGraphic
 
     public override void LoadSprite(string link)
     {
-        DefaultSprite = gameObject.GetComponent<Image>().sprite;
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + link);
+        base.LoadSprite(link);
 
     }
 

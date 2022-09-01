@@ -10,7 +10,7 @@ public class LoadPauseMenu : LoadMenuFacade
     public override string ObjectPath { get => DeffaultMainMenuPath; protected set => DeffaultMainMenuPath = value; }
     public override string LoadPathToKindAssets { get => DeffaultLoadPathToKindAssets; protected set => DeffaultLoadPathToKindAssets = value; }
 
-    private string DeffaultLoadPathToKindAssets = "MenuPrefabs";
+    private string DeffaultLoadPathToKindAssets = UIInfo.GetLinkToAssets("MenuPrefabsLoadPathToKindAssetsPath");
     private string DeffaultMainMenuPath = "LoadPauseMenuPath";
 
     public override void ChangeLoadMenuPath(string newLoadMenuPath)

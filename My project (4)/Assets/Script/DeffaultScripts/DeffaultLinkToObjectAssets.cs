@@ -17,7 +17,7 @@ public class DeffaultLinkToObjectAssets
         {"StateKindPath","Objects/GameObject" },
         {"PlayerStatePath","/PlayerObjects/States/PlayerState" },
         {"MainPlayerStatePath","/MainPlayerState" },
-        {"NPCStateKindPath","/NPCObject" },
+        {"NPCStateKindPath","/NPCObjects" },
         {"VisitorStatePath","/VisitorObjects/States/VisitorState" },
         {"MainVisitorStatePath","/VisitorObjects/States/MainVisitorState" },
 
@@ -26,7 +26,13 @@ public class DeffaultLinkToObjectAssets
         {"ObjectFacadePrefabsPath","Prefabs/Objects" },
         {"PlayerObjectFacadePrefabsPath","/PlayerPrefabs" },
         {"NPCObjectFacadePrefabsPath","/NPCPrefabs" },
-        {"VisitorObjectFacadePrefabsPath","/VisitorPrefabs" }
-};
+        {"VisitorObjectFacadePrefabsPath","/VisitorPrefabs" },
+
+        //KindPathToAssetsForResource
+        {"ResourceKindPathToAssetsForResource","ResourceAssets"},
+        {"PlayerResourceKindPathToAssetsForResource","/PlayerAssets" },
+        {"NPCResourceKindPathToAssetsForResource","/NPCAssets" },
+        {"VisitorResourceKindPathToAssetsForResource","/VisitorAssets" }
+    };
 
 }

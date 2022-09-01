@@ -10,7 +10,7 @@ public class LoadExitFromGameInMainMenu : LoadMenuFacade
     public override string ObjectPath { get => DeffaultMainMenuPath; protected set => DeffaultMainMenuPath = value; }
     public override string LoadPathToKindAssets { get => DeffaultLoadPathToKindAssets; protected set => DeffaultLoadPathToKindAssets = value; }
 
-    private string DeffaultLoadPathToKindAssets = "ChooseMenu";
+    private string DeffaultLoadPathToKindAssets = UIInfo.GetLinkToAssets("ChooseMenuLoadPathToKindAssetsPath");
     private string DeffaultMainMenuPath = "LoadExitFromGameInMainMenuPath";
 
     public override void ChangeLoadMenuPath(string newLoadMenuPath)

@@ -8,10 +8,12 @@ public abstract class SpriteFacade : MonoBehaviour
 {
     public virtual string PathToSprite { protected set; get;}
     public virtual string SpriteFacadePath { protected set; get; }
+        
+    protected string SpriteFacadeLoadKindPath = UIInfo.GetLinkToAssets("SpriteFacadeLoadPath");
 
     public virtual void LoadSprite()
     {
-        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + PathToSprite);
+        gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(SpriteFacadeLoadKindPath + PathToSprite);
     }
     public virtual void ChangePathToassets(string newPathToSprite)
     {
