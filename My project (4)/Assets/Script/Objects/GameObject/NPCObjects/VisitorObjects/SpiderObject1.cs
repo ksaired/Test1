@@ -66,7 +66,7 @@ public class SpiderObject1 : SpiderObjectFacade
     }
     public override void StartFacade()
     {
-        CurrentInfo.StartResource();
+        CurrentInfo.StartResource(gameObject);
 
         base.StartFacade();
     }

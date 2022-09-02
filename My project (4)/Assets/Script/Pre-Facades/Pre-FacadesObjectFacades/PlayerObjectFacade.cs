@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerObjectFacade : ActiveObjectFacade
+public abstract class PlayerObjectFacade : ActiveObjectFacade,IQuestTaker
 {
     public override Resource CurrentInfo { get => CurrentPlayerInfo; protected set => CurrentPlayerInfo = (PlayerResource)value; }
     public override string PrefabLoadPath { get => ObjectFacadePrefabsPath + PlayerObjectFacadePrefabsPath; protected set => base.PrefabLoadPath = value; }
+    IQuestTakerResource IQuestTaker.CurrentIQuestTakerResource { get => CurrentPlayerInfo; set => CurrentPlayerInfo = (PlayerResource)value; }
 
     public virtual PlayerResource CurrentPlayerInfo { protected set; get; }
     public virtual string PlayerSpawnPath { protected set; get; }
@@ -20,5 +21,46 @@ public abstract class PlayerObjectFacade : ActiveObjectFacade
     public virtual void ChangeCurrentPlayerInfo(PlayerResource newPlayerInfo)
     {
         CurrentPlayerInfo = newPlayerInfo;
+    }
+
+    public virtual bool CheckOnCompleteGoal<T>(T CurrentGoal,string CurrentTag)
+    {
+        if (CurrentTag == "currentint" && CurrentGoal is int a)
+        {
+            if (CurrentPlayerInfo.currentint == a)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public virtual bool RecieveReward<T>(T CurrentReward,string CurrentTag)
+    {
+        if (CurrentTag == "currentint" && CurrentReward is int a)
+        {
+            if (CurrentPlayerInfo.currentint == a)
+            {
+                CurrentPlayerInfo.currentint += a;
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public virtual bool RemoveGoalResource<T>(T CurrentRemoveGoalResource,string CurrentTag)
+    {
+        if (CurrentTag == "currentint" && CurrentRemoveGoalResource is int a)
+        {
+            if (CurrentPlayerInfo.currentint == a)
+            {
+                CurrentPlayerInfo.currentint -= a;
+
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

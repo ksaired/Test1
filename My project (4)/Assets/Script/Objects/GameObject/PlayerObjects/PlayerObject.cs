@@ -76,7 +76,8 @@ public class PlayerObject : PlayerObjectFacade
         CurrentPlayerInfo.CurrentPlayer = this;
         CurrentPlayerInfo.CurrentTree = GetComponent<CameraLoadTree>();
 
-        CurrentInfo.StartResource();
+        CurrentInfo.StartResource(gameObject);
+        CurrentInfo.ChangeObjectPrefabsLoadFacade(PrefabLoadPath);
 
         base.StartFacade();
                 

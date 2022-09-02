@@ -32,7 +32,14 @@ public class DeffaultLinkToObjectAssets
         {"ResourceKindPathToAssetsForResource","ResourceAssets"},
         {"PlayerResourceKindPathToAssetsForResource","/PlayerAssets" },
         {"NPCResourceKindPathToAssetsForResource","/NPCAssets" },
-        {"VisitorResourceKindPathToAssetsForResource","/VisitorAssets" }
+        {"VisitorResourceKindPathToAssetsForResource","/VisitorAssets" },
+
+        //TaskPrefabsLoadKindPath 
+        {"TaskFacadePrefabsLoadKindPath","/UiTask" },
+        {"TaskForActivingObjectFacadePrefabsLoadKindPath","/UiTaskForActivingObject" },
+
+        //QuestGiverLoadKindPath
+        {"VisitorQuestGiverLoadKindPath","/VisitorGiverUi" }
     };
 
 }

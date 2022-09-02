@@ -27,7 +27,7 @@ public class SpiderTestResource : SpiderResource
         base.ChangeTestLoadTree(NewTestLoadTree);
     }
     
-    public override void StartResource()
+    public override void StartResource(GameObject CurrentObject)
     {
         Testint = 0;
     }

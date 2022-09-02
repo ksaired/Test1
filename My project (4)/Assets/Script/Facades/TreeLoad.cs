@@ -110,7 +110,7 @@ public abstract class TreeLoad : MonoBehaviour
   {
         foreach (var i in CurrentTheSecondaryLevelOfLoadTree.CurrentColiders)
         {
-            
+           
             if (i.transform.gameObject.GetComponent<ObjectFacade>() && !CurrentTheFirstLevelOfLoadTree.CurrentColiders.Contains(i))
             {
                 Debug.Log("TLoadTree2");

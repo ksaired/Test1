@@ -66,7 +66,8 @@ public class VisitorTestObject : VisitorObjectFacade
     }
     public override void StartFacade()
     {
-        CurrentInfo.StartResource();
+        CurrentInfo.StartResource(gameObject);
+        CurrentInfo.ChangeObjectPrefabsLoadFacade(PrefabLoadPath);
 
         base.StartFacade();
     }

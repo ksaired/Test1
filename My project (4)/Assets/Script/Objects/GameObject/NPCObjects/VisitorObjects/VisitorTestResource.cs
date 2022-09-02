@@ -6,6 +6,9 @@ public class VisitorTestResource : VisitorResource
 {
     public override VisitorSaveResource SaveVisitorInfo { get => SaveVisitorTestInfo; set => SaveVisitorTestInfo = (VisitorTestSaveInfo)value; }
 
+    public override GameObject CurrentObject { get => base.CurrentObject; protected set => base.CurrentObject = value; }
+
+    public override string ObjectPrefabsLoadKindPath { get => base.ObjectPrefabsLoadKindPath; protected set => base.ObjectPrefabsLoadKindPath = value; }
     public override string ObjectResourcePathToAssetsForResource { get => VisitorObjectResourcePathToAssetsForResource; protected set =>VisitorObjectResourcePathToAssetsForResource = value; }
 
     public VisitorTestSaveInfo SaveVisitorTestInfo = new VisitorTestSaveInfo();
@@ -31,8 +34,10 @@ public class VisitorTestResource : VisitorResource
         base.ChangeTestLoadTree(NewTestLoadTree);
     }
 
-    public override void StartResource()
+    public override void StartResource(GameObject CurrentObject)
     {
+        this.CurrentObject = CurrentObject;
+
         Testint = 0;
     }
 }

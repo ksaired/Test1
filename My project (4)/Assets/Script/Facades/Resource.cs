@@ -9,6 +9,9 @@ public abstract class Resource : MonoBehaviour
     public virtual TreatmentOfStatesFacade CurrentStateFacade { get; protected set; }
     public virtual TreatmentOfStatesFacade CurrentMainStateFacade { get; protected set; }
         
+    public virtual GameObject CurrentObject { protected set; get; }
+
+    public virtual string ObjectPrefabsLoadKindPath { protected set; get; }
     public virtual string KindPathToAssetsForResource { protected set; get; }
     public virtual string ObjectResourcePathToAssetsForResource { protected set; get; }
 
@@ -33,6 +36,10 @@ public abstract class Resource : MonoBehaviour
     {
         currentSaveInfo.IsTreatmentActive = NewValue;
     }
+    public virtual void ChangeObjectPrefabsLoadFacade(string NewObjectPrefabsLoadKindPath)
+    {
+        ObjectPrefabsLoadKindPath = NewObjectPrefabsLoadKindPath;
+    }
     public virtual void ChangePathToAssetsForResource(string NewPathToAssetsForResource)
     {
         KindPathToAssetsForResource = NewPathToAssetsForResource;
@@ -43,6 +50,6 @@ public abstract class Resource : MonoBehaviour
     }
 
 
-    public abstract void StartResource();
+    public abstract void StartResource(GameObject CurrentGameObject);
             
 }
