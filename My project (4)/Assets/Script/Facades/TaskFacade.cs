@@ -34,7 +34,7 @@ public abstract class TaskFacade : MonoBehaviour
 
     public abstract bool CheckOfGoal(IQuestTaker CurrentQuestTaker);
 
-    public abstract bool CheckOfCompleteTask(ref IQuestTaker CurrentQuestTaker,ref IQuestGiverResource CurrentGiverresource);
+    public abstract IQuestGiverResource CheckOfCompleteTask(ref IQuestTaker CurrentQuestTaker,IQuestGiverResource CurrentGiverresource);
     
     protected abstract bool TakeReward(ref IQuestTaker CurrentQuestTaker);
 

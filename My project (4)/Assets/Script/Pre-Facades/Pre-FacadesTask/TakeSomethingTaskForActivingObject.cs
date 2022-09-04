@@ -59,7 +59,7 @@ public class TakeSomethingTaskForActivingObject : TaskForActivingObjectFacade
 
         return false;
     }
-    public override bool CheckOfCompleteTask(ref IQuestTaker CurrentQuestTaker,ref IQuestGiverResource CurrentGiverResource)
+    public override IQuestGiverResource CheckOfCompleteTask(ref IQuestTaker CurrentQuestTaker,IQuestGiverResource CurrentGiverResource)
     {
         foreach (var i in Goals.Keys)
         {
@@ -71,14 +71,12 @@ public class TakeSomethingTaskForActivingObject : TaskForActivingObjectFacade
                     {
                         CurrentQuestTaker.CurrentIQuestTakerResource.RemoveFromRecivedTask(this);
                         CurrentGiverResource.RemoveFromGivedTask(this);
-
-                        return true;
                     }
                 }
             }
         }
 
-        return false;
+        return CurrentGiverResource;
     }
     
     protected override bool TakeReward(ref IQuestTaker CurrentQuestTaker)
