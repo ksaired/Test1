@@ -10,7 +10,7 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
     public override TreatmentOfNPCState CurrentNPCTreatmentState { get => CurrentVisitorTreatmentState; set => CurrentVisitorTreatmentState = (TreatmentOfVisitorState)value; }
 
     public override string KindPathToAssetsForResource { get => ResourceKindPathToAssetsForResource + NPCResourceKindPathToAssetsForResource + VisitorResourceKindPathToAssetsForResource; protected set => base.KindPathToAssetsForResource = value; }
-    public string QuestGiverLoadKindPath { get => VisitorQuestGiverLoadKindPath; set => VisitorQuestGiverLoadKindPath = value; }
+    public string QuestGiverLoadKindPath { get => ObjectPrefabsLoadKindPath; set => ObjectPrefabsLoadKindPath = value; }
 
     public virtual IQuestGiverSaveResource CurrentQuestGiverSaveInfo { get; set; }
     
@@ -18,9 +18,8 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
 
     public TreatmentOfMainVisitorState CurrentVisitorTreatmentMainState = new TreatmentOfMainVisitorState();
     public TreatmentOfVisitorState CurrentVisitorTreatmentState = new TreatmentOfTestVisitorState();
-
+       
     protected string VisitorResourceKindPathToAssetsForResource = SceneInfo.GetLinkToAssets("VisitorResourceKindPathToAssetsForResource");
-    protected string VisitorQuestGiverLoadKindPath = SceneInfo.GetLinkToAssets("VisitorQuestGiverLoadKindPath");
 
     public virtual bool AddToTaskForGive(TaskFacade NewTaskFacade)
     {
@@ -84,4 +83,6 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
     {
         SaveVisitorInfo.LimitOfGivedTask = NewLimitOfGivedTask;
     }
+
+    
 }

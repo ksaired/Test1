@@ -14,6 +14,7 @@ public class PlayerResource : Resource,IQuestTakerResource
     public override string KindPathToAssetsForResource { get => ResourceKindPathToAssetsForResource + PlayerResourceKindPathToAssetsForResource; protected set => base.KindPathToAssetsForResource = value; }
     public override string ObjectResourcePathToAssetsForResource { get => PlayerObjectResourcePathToAssetsForResource; protected set => PlayerObjectResourcePathToAssetsForResource = value; }
     public IQuestTakerSaveResource CurrentQuestTakerSaveInfo { get => SaveInfo; set => SaveInfo = (PlayerSaveInfo)value; }
+    string IQuestTakerResource.QuestTakerLoadPrefabsKindPath { get => ObjectPrefabsLoadKindPath;}
 
     public PlayerSaveInfo SaveInfo = new PlayerSaveInfo();
 
@@ -23,16 +24,21 @@ public class PlayerResource : Resource,IQuestTakerResource
     public CameraLoadTree CurrentTree = new CameraLoadTree();
 
     public PlayerObjectFacade CurrentPlayer;
-    
-    public int currentint = 0;
+
+    public Collider2D[] CurrentColiders;
+
+    public float currentint = 5f;
+
+    public float SizeOfFirstCircleDetecter = 2f;
 
     public string PauseMenuLoadPath = "MainPauseMenu";
     
     public bool IsOpenPauseMenu = true;
-
+        
     protected string PlayerResourceKindPathToAssetsForResource = SceneInfo.GetLinkToAssets("PlayerResourceKindPathToAssetsForResource");
 
     private string PlayerObjectResourcePathToAssetsForResource = "/PlayerTestObjectAssets";
+
     public override void ChangeSaveInfo(SaveResource newSaveInfo)
     {
         base.ChangeSaveInfo(newSaveInfo);

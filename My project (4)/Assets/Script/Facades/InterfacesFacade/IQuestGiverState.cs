@@ -9,17 +9,8 @@ using UnityEngine.Events;
 public interface IQuestGiverState
 {
     public abstract IQuestGiverResource CurrentResource { protected set; get; }
-    public abstract List<TaskFacade> CurrentTreatmentTasks { protected set; get; }
-    public abstract TaskFacade CurrentTreatmentTask { protected set; get; }
-    public abstract GameObject CurrentTaskTable { protected set; get; }
 
-    public abstract GameObject CurrentQuestTaskTaker { protected set; get; }
-    public abstract GameObject CurrentGameObject { protected set; get; }
-
-    public abstract GameObject TheFirstUiQuestGiverMenu { protected set; get; }
-    public abstract GameObject TheSecondaryUiQuestgiverMenu { protected set; get; }
-    
-    public abstract Transform TransformOfExitFromTableButton { protected set; get; }
+    public abstract Vector3 PositionOfExitFromTableButton { protected set; get; }
 
     public abstract string PreafabsLoadPath { protected set; get; }
 
@@ -29,13 +20,24 @@ public interface IQuestGiverState
     public abstract string UiObjectLinkToTheFirstUiQuestGiverMenu {protected set; get; }
     public abstract string UiObjectLinkToTheSecondaryUiQuestGiverMenu {protected set; get; }
     
-
     public abstract string LinkToBaseUiButton { protected set; get; }
     public abstract string LinkToDropdownBaseObject { protected set; get; }
 
     public abstract float DistanceBetweenTheFirstUiQuestGiverMenuAndGameObject {protected get; set; }
     public abstract float DistanceBeetwenTheFirstUiQuestGiverMenuAndTheSecondaryUiQuestGiverMenu {protected get; set; }
-    
+
+    public GameObject CurrentQuestTaskTaker { protected set; get; }
+
+    public List<TaskFacade> CurrentTreatmentTasks { protected set; get; }
+    public TaskFacade CurrentTreatmentTask { protected set; get; }
+    public GameObject CurrentTaskTable { protected set; get; }
+    public Dropdown CurrentDropDown { protected set; get; }
+
+    public GameObject CurrentGameObject { protected set; get; }
+
+    public GameObject TheFirstUiQuestGiverMenu { protected set; get; }
+    public GameObject TheSecondaryUiQuestgiverMenu { protected set; get; }
+
 
     public virtual void ChangeDistanceBetweenTheFirstUiQuestGiverMenuAndGameObject(float NewDistanceBetweenTheFirstUiQuestGiverMenuAndGameObject) 
     {
@@ -46,9 +48,9 @@ public interface IQuestGiverState
         DistanceBeetwenTheFirstUiQuestGiverMenuAndTheSecondaryUiQuestGiverMenu = NewDistanceBetweenTheSecondaryUiQuestGiverMenuAndGameObject;
     }
    
-    public virtual void ChangeTransformExitFromTableButton(Transform NewTransformExitFromTableButton)
+    public virtual void ChangePositionOfExitFromTableButton(Vector3 NewPositionExitFromTableButton)
     {
-        TransformOfExitFromTableButton = NewTransformExitFromTableButton;
+        PositionOfExitFromTableButton = NewPositionExitFromTableButton;
     }
 
     public virtual void AddToCurrentTreatmentTask(TaskFacade NewTreatmenTask)
@@ -66,16 +68,16 @@ public interface IQuestGiverState
         }
     }
 
-    public virtual void StartCreateTheFirstMenu()
+    public virtual void StartCreateTheFirstMenu(GameObject QuestTaskerObject)
     {
-        FindCurrentQuestTaskTaker();
+        GiveCurrentQuestTaskTaker(QuestTaskerObject);
 
         CreateTheFirstMenu();        
     }
 
     public virtual void CreateMenuWithAllTaskForGive()
     {
-        FindCurrentQuestTaskTaker();
+        
 
         if (CreateTheSecondaryUiQuestGiverMenu())
         {
@@ -91,11 +93,13 @@ public interface IQuestGiverState
                 {
                     CreateDropDownWithTaskForGive(ref CurrentDropDownWithAllTaskForGive);
 
+                    CurrentDropDown = CurrentDropDownWithAllTaskForGive;
+
                     GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
 
                     if (ObjectOfBaseButton != null)
                     {
-                        GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, TransformOfExitFromTableButton.position, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                        GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton,PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
 
                         CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheSecondaryUiQuestGiverMenu);
                     }
@@ -109,8 +113,7 @@ public interface IQuestGiverState
     }
     public virtual void CreateMenuWithAllGivedTask()
     {
-        FindCurrentQuestTaskTaker();
-
+        
         if (CreateTheSecondaryUiQuestGiverMenu())
         {
             GameObject CurrentObjectOfBaseDropDown = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToDropdownBaseObject);
@@ -125,11 +128,13 @@ public interface IQuestGiverState
                 {
                     CreateDropDownWithGivedTask(ref CurrentDropDownWithGivedTask);
 
+                    CurrentDropDown = CurrentDropDownWithGivedTask;
+
                     GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
 
                     if (ObjectOfBaseButton != null)
                     {
-                        GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, TransformOfExitFromTableButton.position, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                        GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
 
                         CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheSecondaryUiQuestGiverMenu);
                     }
@@ -158,9 +163,7 @@ public interface IQuestGiverState
             {
                 GameObject ObjectOfGiveTaskButton = Object.Instantiate(ObjectOfBaseButton,new Vector3(CurrentTable.transform.position.x - DistanceForButtonOnX,CurrentTable.transform.position.y - DistanceForButtonOnY),Quaternion.identity,CurrentTable.transform);
 
-                CreateButton(ref ObjectOfGiveTaskButton,"GiveTaskButton",AddTaskToTaskTaker);
-                               
-                GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, TransformOfExitFromTableButton.position, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
 
                 CreateButton(ref CurrentObjectOfExitButton,"Exit",DestroyTable);
                                 
@@ -182,14 +185,10 @@ public interface IQuestGiverState
             if (ObjectOfBaseButton != null)
             {
                 GameObject ObjectOfAbadoneTaskButon = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x - DistanceForButtonOnX, CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
-
-                CreateButton(ref ObjectOfAbadoneTaskButon,"AbadoneTask",RemoveFromCurrentReceivedTask);
-                            
+                      
                 GameObject ObjectOfCheckOnCompleteTaskButon = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x + DistanceForButtonOnX,CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
-
-                CreateButton(ref ObjectOfCheckOnCompleteTaskButon,"CheckOnComplete",CheckOnCompleteTask);
-                             
-                GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, TransformOfExitFromTableButton.position, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+         
+                GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
 
                 CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTable);
                 
@@ -203,7 +202,7 @@ public interface IQuestGiverState
     }
     public virtual void RemoveFromCurrentReceivedTask()
     {
-        CurrentQuestTaskTaker.GetComponent<IQuestTaker>().CurrentIQuestTakerResource.RemoveFromRecivedTask(CurrentTreatmentTask);
+       CurrentQuestTaskTaker.GetComponent<IQuestTaker>().CurrentIQuestTakerResource.RemoveFromRecivedTask(CurrentTreatmentTask);
     }
     public virtual void CheckOnCompleteTask()
     {
@@ -214,7 +213,7 @@ public interface IQuestGiverState
     }
 
 
-    public virtual void DestroyTheFirstUiQuestGiverMenu()
+    public void DestroyTheFirstUiQuestGiverMenu()
     {
         if (TheFirstUiQuestGiverMenu != null)
         {
@@ -232,7 +231,10 @@ public interface IQuestGiverState
             Object.Destroy(TheSecondaryUiQuestgiverMenu);
 
             TheSecondaryUiQuestgiverMenu = null;
-                       
+
+            DestroyTheFirstUiQuestGiverMenu();
+
+            CreateTheFirstMenu();
         }
                 
     }
@@ -244,6 +246,16 @@ public interface IQuestGiverState
 
             CurrentTaskTable = null;
 
+            if (CurrentDropDown != null)
+            {
+                if (!CurrentTreatmentTasks.Contains(CurrentTreatmentTask))
+                {
+                    if (CurrentDropDown.options[CurrentTreatmentTasks.IndexOf(CurrentTreatmentTask)].text == CurrentTreatmentTask.NameOfTask)
+                    {
+                       CurrentDropDown.options.RemoveAt(CurrentTreatmentTasks.IndexOf(CurrentTreatmentTask));
+                    }
+                }
+            }
         }
                
     }
@@ -344,9 +356,18 @@ public interface IQuestGiverState
         }
     }
 
-    protected virtual void FindCurrentQuestTaskTaker()
+    protected virtual bool GiveCurrentQuestTaskTaker(GameObject CurrentObject)
     {
-       
+       IQuestTaker CurrentQuestTaskTaker = CurrentObject.GetComponent<IQuestTaker>();
+
+       if (CurrentQuestTaskTaker != null)
+       {
+         this.CurrentQuestTaskTaker = CurrentObject;
+
+         return true;
+       }
+
+       return false;
     }
     
     protected virtual bool CreateButton(ref GameObject ObjectOfBasebutton,string NameOfButton,UnityAction MethodForcall)
@@ -400,7 +421,7 @@ public interface IQuestGiverState
                     return false;
                 }
                 
-                GameObject CurrentObjectOfExitButton = Object.Instantiate(CurrentObjectOfBaseButton,TransformOfExitFromTableButton.position, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                GameObject CurrentObjectOfExitButton = Object.Instantiate(CurrentObjectOfBaseButton,PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
 
                 if (!CreateButton(ref CurrentObjectOfExitButton,"Exit",DestroyTheFirstUiQuestGiverMenu))
                 {

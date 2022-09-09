@@ -13,7 +13,40 @@ public abstract class VisitorSaveResource : NPCSaveResource,IQuestGiverSaveResou
 
     public Dictionary<string, List<string>> DeffaultCurrentLinkToStates = new Dictionary<string, List<string>>();
 
-    public List<TaskForActivingObjectFacade> DeffaultTaskForGive = new List<TaskForActivingObjectFacade>();
+    public List<TaskForActivingObjectFacade> DeffaultTaskForGive = new List<TaskForActivingObjectFacade>()
+    {
+        new TakeSomethingTaskForActivingObject("TestTask","JustTestTask",
+
+        new Dictionary<string, List<int>>()
+        {
+              {"currentint",new List<int>()
+                        {
+                            10
+                        }
+              }
+        },
+        new Dictionary<string, List<float>>()
+        {
+            {"currentfloat",new List<float>()
+                        {
+                            5f
+                        }
+            }
+        },
+        new Dictionary<string, List<float>>()
+        {
+             {"currentfloat",new List<float>()
+                        {
+                            5f
+                        }
+             }
+
+        }
+
+        )
+    
+    };
+
     public List<TaskForActivingObjectFacade> DeffaultGivedTask = new List<TaskForActivingObjectFacade>();
 
     public int DeffaultLimitOfTaskforGive = 2;

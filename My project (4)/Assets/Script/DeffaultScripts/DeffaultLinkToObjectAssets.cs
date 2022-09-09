@@ -39,7 +39,8 @@ public class DeffaultLinkToObjectAssets
         {"TaskForActivingObjectFacadePrefabsLoadKindPath","/UiTaskForActivingObject" },
 
         //QuestGiverLoadKindPath
-        {"VisitorQuestGiverLoadKindPath","/VisitorGiverUi" }
+        {"VisitorQuestGiverLoadKindPath","/VisitorGiverUi" },
+        {"PlayerQuestTakerLoadKindPath","/PlayerTakerUi" }
     };
 
 }

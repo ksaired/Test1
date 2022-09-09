@@ -32,6 +32,13 @@ public abstract class PlayerObjectFacade : ActiveObjectFacade,IQuestTaker
                 return true;
             }
         }
+        else if (CurrentTag == "currentfloat" && CurrentGoal is float i)
+        {
+            if (CurrentPlayerInfo.currentint == i)
+            {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -39,13 +46,17 @@ public abstract class PlayerObjectFacade : ActiveObjectFacade,IQuestTaker
     {
         if (CurrentTag == "currentint" && CurrentReward is int a)
         {
-            if (CurrentPlayerInfo.currentint == a)
-            {
-                CurrentPlayerInfo.currentint += a;
+            CurrentPlayerInfo.currentint += a;
 
-                return true;
-            }
+            return true;
         }
+        else if (CurrentTag == "currentfloat" && CurrentReward is float i)
+        {
+            CurrentPlayerInfo.currentint += i;
+
+            return true;
+        }
+
         return false;
     }
 
@@ -53,14 +64,17 @@ public abstract class PlayerObjectFacade : ActiveObjectFacade,IQuestTaker
     {
         if (CurrentTag == "currentint" && CurrentRemoveGoalResource is int a)
         {
-            if (CurrentPlayerInfo.currentint == a)
-            {
-                CurrentPlayerInfo.currentint -= a;
+           CurrentPlayerInfo.currentint -= a;
 
-                return true;
-            }
+           return true;
         }
-        
+        else if (CurrentTag == "currentfloat" && CurrentRemoveGoalResource is float i)
+        {
+            CurrentPlayerInfo.currentint += i;
+
+            return true;
+        }
+
         return false;
     }
 }

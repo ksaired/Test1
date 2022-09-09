@@ -11,12 +11,13 @@ public class TakeSomethingTaskForActivingObject : TaskForActivingObjectFacade
     public override string DescriptionOfTask { get => base.DescriptionOfTask; protected set => base.DescriptionOfTask = value; }
 
     public Dictionary<string, List<int>> Rewards = new Dictionary<string, List<int>>();
-
+   
     public Dictionary<string, List<float>> GoalsResource = new Dictionary<string, List<float>>();
 
     public Dictionary<string, List<float>> Goals = new Dictionary<string, List<float>>();
+   
+    private string TaskTakeSomethingTaskForActivingObjectTablePrefabsLoadPath = "/TakeSomethingTaskForActivingObjectTable";
 
-    private string TaskTakeSomethingTaskForActivingObjectTablePrefabsLoadPath = "/TakeSomethingTaskForActivingObject";
     public TakeSomethingTaskForActivingObject(string NameOfTask, string DescriptionOfTask, Dictionary<string, List<int>> Rewards, Dictionary<string, List<float>> GoalsResource, Dictionary<string, List<float>> Goals)
     {
         this.NameOfTask = NameOfTask;
