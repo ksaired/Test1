@@ -8,12 +8,18 @@ public class VisitorTestResource : VisitorResource
 
     public override GameObject CurrentObject { get => base.CurrentObject; protected set => base.CurrentObject = value; }
 
+    public override Collider2D[] CurrentColiders { get => base.CurrentColiders; set => base.CurrentColiders = value; }
+
     public override string ObjectPrefabsLoadKindPath { get => base.ObjectPrefabsLoadKindPath; protected set => base.ObjectPrefabsLoadKindPath = value; }
     public override string ObjectResourcePathToAssetsForResource { get => VisitorObjectResourcePathToAssetsForResource; protected set =>VisitorObjectResourcePathToAssetsForResource = value; }
+
+    public override float SizeOfDetectedCircle { get => DeffaultSizeOfDetectedCircle; set => DeffaultSizeOfDetectedCircle = value; }
 
     public VisitorTestSaveInfo SaveVisitorTestInfo = new VisitorTestSaveInfo();
 
     public int Testint;
+
+    public float DeffaultSizeOfDetectedCircle = 2f;
 
     private string VisitorObjectResourcePathToAssetsForResource = "/VisitorTestObjectAssets";
 
