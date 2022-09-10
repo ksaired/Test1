@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreatmentPhysicalMainState : PlayerMainState
+public class TreatmentPhysicalPlayerMainState : PlayerMainState
 {
     public PlayerResource CurrentPlayerMainInfo;
 
-    private string PlayerPauseStatePath = "TreatmentPhysicalMainStatePath";
+    private string PlayerTreatmentPhysicalStatePath = "TreatmentPhysicalPlayerMainState";
 
     public override PlayerResource CurrentPlayerInfo { get => CurrentPlayerMainInfo; set => CurrentPlayerMainInfo = value; }
 
-    public override string StatePath { get => PlayerPauseStatePath; protected set => PlayerPauseStatePath = value; }
+    public override string StatePath { get => PlayerTreatmentPhysicalStatePath; protected set => PlayerTreatmentPhysicalStatePath = value; }
 
    
     public override void ChangeCurrentInfo(Resource newInfo)
@@ -45,10 +45,15 @@ public class TreatmentPhysicalMainState : PlayerMainState
     protected void PhysicalSystem()
     {
         UpdateRaycast();
+
+        foreach (var i in CurrentPlayerInfo.CurrentColiders)
+        {
+            Debug.Log(i.gameObject);
+        }
     }
 
     protected void UpdateRaycast()
     {
-        CurrentPlayerMainInfo.CurrentColiders = Physics2D.OverlapCircleAll(CurrentPlayerMainInfo.CurrentPlayer.gameObject.transform.position, CurrentPlayerMainInfo.SizeOfFirstCircleDetecter);
+        CurrentPlayerMainInfo.CurrentColiders = Physics2D.OverlapCircleAll(CurrentPlayerMainInfo.CurrentObject.transform.position, CurrentPlayerMainInfo.SizeOfFirstCircleDetecter);
     }
 }

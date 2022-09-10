@@ -34,7 +34,9 @@ public class VisitorGiveTaskState : VisitorState,IQuestGiverState
 
    private GameObject DeffaultTheFirstUiQuestGiverMenu;
    private GameObject DeffaultTheSecondaryUiQuestgiverMenu;
-      
+
+   private IQuestGiverState CurrentQuestGiver => this;
+         
    public override VisitorResource CurrentVisitorInfo { get =>  CurrentVisitorTestResource; set => CurrentVisitorTestResource = (VisitorTestResource)value; }
    public override string StatePath { get => VisitorGiveTaskStatePath; protected set => VisitorGiveTaskStatePath = value; }
 
@@ -83,14 +85,36 @@ public class VisitorGiveTaskState : VisitorState,IQuestGiverState
     public override void StopState()
     {
         Debug.Log("stopstate");
-
-        
     }
 
-    void IQuestGiverState.DestroyTable()
+    bool IQuestGiverState.FindCurrentQuestTaskTaker()
     {
+        IQuestTaker CurrentQuestTaker = DeffaultCurrentQuestTaskTaker.GetComponent<IQuestTaker>();
 
+        IQuestTaker CurrentVoidQuestTaker;
+
+        if (CurrentQuestTaker != null)
+        {
+           foreach (var i in CurrentVisitorTestResource.CurrentColiders)
+           {
+             CurrentVoidQuestTaker = i.GetComponent<IQuestTaker>();
+
+             if (CurrentVoidQuestTaker != null&& CurrentVoidQuestTaker  == CurrentQuestTaker)
+             {
+                    return true;
+             }
+             else
+             {
+                    CurrentQuestGiver.DestroyTable();
+                    CurrentQuestGiver.DestroyTheSecondaryUiQuestGiverMenu();
+                    CurrentQuestGiver.DestroyTheFirstUiQuestGiverMenu();
+
+             }
+
+           }
+
+        }
+
+        return false;
     }
-    
-
 }

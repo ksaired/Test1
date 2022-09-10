@@ -77,138 +77,164 @@ public interface IQuestGiverState
 
     public virtual void CreateMenuWithAllTaskForGive()
     {
-        
-
-        if (CreateTheSecondaryUiQuestGiverMenu())
+        if (FindCurrentQuestTaskTaker())
         {
-            GameObject CurrentObjectOfBaseDropDown = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToDropdownBaseObject);
 
-            if (CurrentObjectOfBaseDropDown != null)
+            if (CreateTheSecondaryUiQuestGiverMenu())
             {
-                CurrentObjectOfBaseDropDown = Object.Instantiate(CurrentObjectOfBaseDropDown,CurrentObjectOfBaseDropDown.transform.position,Quaternion.identity,TheSecondaryUiQuestgiverMenu.transform.parent);
+                GameObject CurrentObjectOfBaseDropDown = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToDropdownBaseObject);
 
-                Dropdown CurrentDropDownWithAllTaskForGive = CurrentObjectOfBaseDropDown.GetComponentInChildren<Dropdown>();
-
-                if (CurrentDropDownWithAllTaskForGive)
+                if (CurrentObjectOfBaseDropDown != null)
                 {
-                    CreateDropDownWithTaskForGive(ref CurrentDropDownWithAllTaskForGive);
+                    CurrentObjectOfBaseDropDown = Object.Instantiate(CurrentObjectOfBaseDropDown, CurrentObjectOfBaseDropDown.transform.position, Quaternion.identity, TheSecondaryUiQuestgiverMenu.transform.parent);
 
-                    CurrentDropDown = CurrentDropDownWithAllTaskForGive;
+                    Dropdown CurrentDropDownWithAllTaskForGive = CurrentObjectOfBaseDropDown.GetComponentInChildren<Dropdown>();
 
-                    GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
-
-                    if (ObjectOfBaseButton != null)
+                    if (CurrentDropDownWithAllTaskForGive)
                     {
-                        GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton,PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                        CreateDropDownWithTaskForGive(ref CurrentDropDownWithAllTaskForGive);
 
-                        CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheSecondaryUiQuestGiverMenu);
+                        CurrentDropDown = CurrentDropDownWithAllTaskForGive;
+
+                        GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
+
+                        if (ObjectOfBaseButton != null)
+                        {
+                            GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                            CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheSecondaryUiQuestGiverMenu);
+                        }
                     }
-                }
-                else
-                {
-                    Object.Destroy(CurrentObjectOfBaseDropDown);
+                    else
+                    {
+                        Object.Destroy(CurrentObjectOfBaseDropDown);
+                    }
                 }
             }
         }
     }
     public virtual void CreateMenuWithAllGivedTask()
     {
-        
-        if (CreateTheSecondaryUiQuestGiverMenu())
+        if (FindCurrentQuestTaskTaker())
         {
-            GameObject CurrentObjectOfBaseDropDown = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToDropdownBaseObject);
 
-            if (CurrentObjectOfBaseDropDown != null)
+            if (CreateTheSecondaryUiQuestGiverMenu())
             {
-                CurrentObjectOfBaseDropDown = Object.Instantiate(CurrentObjectOfBaseDropDown, CurrentObjectOfBaseDropDown.transform.position, Quaternion.identity, TheSecondaryUiQuestgiverMenu.transform.parent);
+                GameObject CurrentObjectOfBaseDropDown = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToDropdownBaseObject);
 
-                Dropdown CurrentDropDownWithGivedTask = CurrentObjectOfBaseDropDown.GetComponentInChildren<Dropdown>();
-
-                if (CurrentDropDownWithGivedTask)
+                if (CurrentObjectOfBaseDropDown != null)
                 {
-                    CreateDropDownWithGivedTask(ref CurrentDropDownWithGivedTask);
+                    CurrentObjectOfBaseDropDown = Object.Instantiate(CurrentObjectOfBaseDropDown, CurrentObjectOfBaseDropDown.transform.position, Quaternion.identity, TheSecondaryUiQuestgiverMenu.transform.parent);
 
-                    CurrentDropDown = CurrentDropDownWithGivedTask;
+                    Dropdown CurrentDropDownWithGivedTask = CurrentObjectOfBaseDropDown.GetComponentInChildren<Dropdown>();
 
-                    GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
-
-                    if (ObjectOfBaseButton != null)
+                    if (CurrentDropDownWithGivedTask)
                     {
-                        GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                        CreateDropDownWithGivedTask(ref CurrentDropDownWithGivedTask);
 
-                        CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheSecondaryUiQuestGiverMenu);
+                        CurrentDropDown = CurrentDropDownWithGivedTask;
+
+                        GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
+
+                        if (ObjectOfBaseButton != null)
+                        {
+                            GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                            CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheSecondaryUiQuestGiverMenu);
+                        }
+                    }
+                    else
+                    {
+                        Object.Destroy(CurrentObjectOfBaseDropDown);
                     }
                 }
-                else
-                {
-                    Object.Destroy(CurrentObjectOfBaseDropDown);
-                }
-            }
 
+            }
         }
     }
     public virtual void CreateTaskForGiveTable(int NumberOfTask)
     {
-        CurrentTreatmentTask = CurrentTreatmentTasks[NumberOfTask];
-                
-        GameObject CurrentTable = Resources.Load<GameObject>(CurrentTreatmentTask.TaskPrefabsLoadKindPath + CurrentTreatmentTask.TaskTablePrefabsLoadPath);
-
-        if (CurrentTable != null )
+        if (FindCurrentQuestTaskTaker())
         {
-            GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
+            CurrentTreatmentTask = CurrentTreatmentTasks[NumberOfTask];
 
-            CurrentTable = Object.Instantiate(CurrentTable,CurrentTable.transform.position,Quaternion.identity,CurrentTable.transform.parent);
+            GameObject CurrentTable = Resources.Load<GameObject>(CurrentTreatmentTask.TaskPrefabsLoadKindPath + CurrentTreatmentTask.TaskTablePrefabsLoadPath);
 
-            if (ObjectOfBaseButton != null)
+            if (CurrentTable != null)
             {
-                GameObject ObjectOfGiveTaskButton = Object.Instantiate(ObjectOfBaseButton,new Vector3(CurrentTable.transform.position.x - DistanceForButtonOnX,CurrentTable.transform.position.y - DistanceForButtonOnY),Quaternion.identity,CurrentTable.transform);
+                GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
 
-                GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                CurrentTable = Object.Instantiate(CurrentTable, CurrentTable.transform.position, Quaternion.identity, CurrentTable.transform.parent);
 
-                CreateButton(ref CurrentObjectOfExitButton,"Exit",DestroyTable);
-                                
+                if (ObjectOfBaseButton != null)
+                {
+                    GameObject ObjectOfGiveTaskButton = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x - DistanceForButtonOnX, CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
+
+                    CreateButton(ref ObjectOfGiveTaskButton, "GiveTask", AddTaskToTaskTaker);
+
+                    GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                    CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTable);
+
+                }
             }
         }
     }
     public virtual void CreateGivedTaskTable(int NumberOfTask)
     {
-        CurrentTreatmentTask = CurrentTreatmentTasks[NumberOfTask];
-
-        GameObject CurrentTable = Resources.Load<GameObject>(CurrentTreatmentTask.TaskPrefabsLoadKindPath + CurrentTreatmentTask.TaskTablePrefabsLoadPath);
-
-        if (CurrentTable != null)
+        if (FindCurrentQuestTaskTaker())
         {
-            GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
+            CurrentTreatmentTask = CurrentTreatmentTasks[NumberOfTask];
 
-            CurrentTable = Object.Instantiate(CurrentTable, CurrentTable.transform.position, Quaternion.identity, CurrentTable.transform.parent);
+            GameObject CurrentTable = Resources.Load<GameObject>(CurrentTreatmentTask.TaskPrefabsLoadKindPath + CurrentTreatmentTask.TaskTablePrefabsLoadPath);
 
-            if (ObjectOfBaseButton != null)
+            if (CurrentTable != null)
             {
-                GameObject ObjectOfAbadoneTaskButon = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x - DistanceForButtonOnX, CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
-                      
-                GameObject ObjectOfCheckOnCompleteTaskButon = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x + DistanceForButtonOnX,CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
-         
-                GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                GameObject ObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
 
-                CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTable);
-                
+                CurrentTable = Object.Instantiate(CurrentTable, CurrentTable.transform.position, Quaternion.identity, CurrentTable.transform.parent);
+
+                if (ObjectOfBaseButton != null)
+                {
+                    GameObject ObjectOfAbadoneTaskButon = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x - DistanceForButtonOnX, CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
+
+                    CreateButton(ref ObjectOfAbadoneTaskButon, "AbadoneTask", RemoveFromCurrentReceivedTask);
+
+                    GameObject ObjectOfCheckOnCompleteTaskButon = Object.Instantiate(ObjectOfBaseButton, new Vector3(CurrentTable.transform.position.x + DistanceForButtonOnX, CurrentTable.transform.position.y - DistanceForButtonOnY), Quaternion.identity, CurrentTable.transform);
+
+                    CreateButton(ref ObjectOfCheckOnCompleteTaskButon, "CheckOnComplete", CheckOnCompleteTask);
+
+                    GameObject CurrentObjectOfExitButton = Object.Instantiate(ObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                    CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTable);
+
+                }
             }
         }
     }
 
     public virtual void AddTaskToTaskTaker()
     {
-        CurrentQuestTaskTaker.GetComponent<IQuestTaker>().CurrentIQuestTakerResource.AddToReceivedTask(CurrentTreatmentTask);
+        if (FindCurrentQuestTaskTaker())
+        {
+            CurrentQuestTaskTaker.GetComponent<IQuestTaker>().CurrentIQuestTakerResource.AddToReceivedTask(CurrentTreatmentTask);
+        }
     }
     public virtual void RemoveFromCurrentReceivedTask()
     {
-       CurrentQuestTaskTaker.GetComponent<IQuestTaker>().CurrentIQuestTakerResource.RemoveFromRecivedTask(CurrentTreatmentTask);
+        if (FindCurrentQuestTaskTaker())
+        {
+            CurrentQuestTaskTaker.GetComponent<IQuestTaker>().CurrentIQuestTakerResource.RemoveFromRecivedTask(CurrentTreatmentTask);
+        }
     }
     public virtual void CheckOnCompleteTask()
     {
-       IQuestTaker TreatmentQuestTaker = CurrentQuestTaskTaker.GetComponent<IQuestTaker>();
+        if (FindCurrentQuestTaskTaker())
+        {
+            IQuestTaker TreatmentQuestTaker = CurrentQuestTaskTaker.GetComponent<IQuestTaker>();
 
-       CurrentResource = CurrentTreatmentTask.CheckOfCompleteTask(ref TreatmentQuestTaker, CurrentResource);
+            CurrentResource = CurrentTreatmentTask.CheckOfCompleteTask(ref TreatmentQuestTaker, CurrentResource);
+        }
               
     }
 
@@ -246,16 +272,7 @@ public interface IQuestGiverState
 
             CurrentTaskTable = null;
 
-            if (CurrentDropDown != null)
-            {
-                if (!CurrentTreatmentTasks.Contains(CurrentTreatmentTask))
-                {
-                    if (CurrentDropDown.options[CurrentTreatmentTasks.IndexOf(CurrentTreatmentTask)].text == CurrentTreatmentTask.NameOfTask)
-                    {
-                       CurrentDropDown.options.RemoveAt(CurrentTreatmentTasks.IndexOf(CurrentTreatmentTask));
-                    }
-                }
-            }
+            CurrentTreatmentTask = null;
         }
                
     }
@@ -369,6 +386,7 @@ public interface IQuestGiverState
 
        return false;
     }
+    protected abstract bool FindCurrentQuestTaskTaker();
     
     protected virtual bool CreateButton(ref GameObject ObjectOfBasebutton,string NameOfButton,UnityAction MethodForcall)
     {
@@ -401,36 +419,40 @@ public interface IQuestGiverState
 
     protected virtual bool CreateTheFirstMenu()
     {
-        if (CreateTheFirstUiQuestGiverMenu())
+        if (FindCurrentQuestTaskTaker())
         {
-            GameObject CurrentObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
 
-            if (CurrentObjectOfBaseButton != null)
+            if (CreateTheFirstUiQuestGiverMenu())
             {
-                GameObject CurrentObjectOfButtonCreateMenuWithAllTaskForGive = Object.Instantiate(CurrentObjectOfBaseButton,new Vector3(TheFirstUiQuestGiverMenu.transform.position.x,TheFirstUiQuestGiverMenu.transform.position.y - DistanceForButtonOnY), Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+                GameObject CurrentObjectOfBaseButton = Resources.Load<GameObject>(CurrentResource.QuestGiverLoadKindPath + PreafabsLoadPath + LinkToBaseUiButton);
 
-                if (!CreateButton(ref CurrentObjectOfButtonCreateMenuWithAllTaskForGive,"TaskForGive",CreateMenuWithAllTaskForGive))
+                if (CurrentObjectOfBaseButton != null)
                 {
-                    return false;
+                    GameObject CurrentObjectOfButtonCreateMenuWithAllTaskForGive = Object.Instantiate(CurrentObjectOfBaseButton, new Vector3(TheFirstUiQuestGiverMenu.transform.position.x, TheFirstUiQuestGiverMenu.transform.position.y - DistanceForButtonOnY), Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                    if (!CreateButton(ref CurrentObjectOfButtonCreateMenuWithAllTaskForGive, "TaskForGive", CreateMenuWithAllTaskForGive))
+                    {
+                        return false;
+                    }
+
+                    GameObject CurrentObjectOfButtonCreateMenuWithGivedTask = Object.Instantiate(CurrentObjectOfBaseButton, new Vector3(CurrentObjectOfBaseButton.transform.position.x, CurrentObjectOfButtonCreateMenuWithAllTaskForGive.transform.position.y - DistanceForButtonOnY), Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                    if (!CreateButton(ref CurrentObjectOfButtonCreateMenuWithGivedTask, "GivedTask", CreateMenuWithAllGivedTask))
+                    {
+                        return false;
+                    }
+
+                    GameObject CurrentObjectOfExitButton = Object.Instantiate(CurrentObjectOfBaseButton, PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
+
+                    if (!CreateButton(ref CurrentObjectOfExitButton, "Exit", DestroyTheFirstUiQuestGiverMenu))
+                    {
+                        return false;
+                    }
+
+                    return true;
                 }
 
-                GameObject CurrentObjectOfButtonCreateMenuWithGivedTask = Object.Instantiate(CurrentObjectOfBaseButton, new Vector3(CurrentObjectOfBaseButton.transform.position.x, CurrentObjectOfButtonCreateMenuWithAllTaskForGive.transform.position.y - DistanceForButtonOnY), Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
-
-                if (!CreateButton(ref CurrentObjectOfButtonCreateMenuWithGivedTask,"GivedTask",CreateMenuWithAllGivedTask))
-                {
-                    return false;
-                }
-                
-                GameObject CurrentObjectOfExitButton = Object.Instantiate(CurrentObjectOfBaseButton,PositionOfExitFromTableButton, Quaternion.identity, TheFirstUiQuestGiverMenu.transform.parent);
-
-                if (!CreateButton(ref CurrentObjectOfExitButton,"Exit",DestroyTheFirstUiQuestGiverMenu))
-                {
-                    return false;
-                }
-
-                return true;
             }
-                        
         }
 
         return false;

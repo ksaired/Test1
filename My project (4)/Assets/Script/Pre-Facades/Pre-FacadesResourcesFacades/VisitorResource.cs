@@ -10,11 +10,16 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
     public override TreatmentOfNPCState CurrentNPCTreatmentState { get => CurrentVisitorTreatmentState; set => CurrentVisitorTreatmentState = (TreatmentOfVisitorState)value; }
 
     public override string KindPathToAssetsForResource { get => ResourceKindPathToAssetsForResource + NPCResourceKindPathToAssetsForResource + VisitorResourceKindPathToAssetsForResource; protected set => base.KindPathToAssetsForResource = value; }
+
     public string QuestGiverLoadKindPath { get => ObjectPrefabsLoadKindPath; set => ObjectPrefabsLoadKindPath = value; }
+
+    public virtual float SizeOfFirstCircleDetecter { set; get; }
 
     public virtual IQuestGiverSaveResource CurrentQuestGiverSaveInfo { get; set; }
     
     public virtual VisitorSaveResource SaveVisitorInfo { get; set; }
+
+    public virtual Collider2D[] CurrentColiders { get; set; }
 
     public TreatmentOfMainVisitorState CurrentVisitorTreatmentMainState = new TreatmentOfMainVisitorState();
     public TreatmentOfVisitorState CurrentVisitorTreatmentState = new TreatmentOfTestVisitorState();
@@ -75,6 +80,11 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
         return false;
     }
 
+    public virtual void ChangeSizeOfFirstCircleDetecter(float NewSizeOfFirstCircleDetecter)
+    {
+        SizeOfFirstCircleDetecter = NewSizeOfFirstCircleDetecter;
+    }
+
     public virtual void ChangeLimitOfTaskforGive(int NewLimitOfTaskforGive)
     {
         SaveVisitorInfo.LimitOfTaskforGive = NewLimitOfTaskforGive;
@@ -84,5 +94,5 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
         SaveVisitorInfo.LimitOfGivedTask = NewLimitOfGivedTask;
     }
 
-    
+
 }

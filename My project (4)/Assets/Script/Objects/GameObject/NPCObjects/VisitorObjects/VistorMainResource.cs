@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VisitorTestResource : VisitorResource
+public class VistorMainResource : VisitorResource
 {
-    public override VisitorSaveResource SaveVisitorInfo { get => SaveVisitorTestInfo; set => SaveVisitorTestInfo = (VisitorTestSaveInfo)value; }
+    public override VisitorSaveResource SaveVisitorInfo { get => MainVisitorSaveInfo; set => MainVisitorSaveInfo = (VisitorMainSaveInfo)value; }
 
     public override GameObject CurrentObject { get => base.CurrentObject; protected set => base.CurrentObject = value; }
 
     public override string ObjectPrefabsLoadKindPath { get => base.ObjectPrefabsLoadKindPath; protected set => base.ObjectPrefabsLoadKindPath = value; }
-    public override string ObjectResourcePathToAssetsForResource { get => VisitorObjectResourcePathToAssetsForResource; protected set =>VisitorObjectResourcePathToAssetsForResource = value; }
+    public override string ObjectResourcePathToAssetsForResource { get => VisitorObjectResourcePathToAssetsForResource; protected set => VisitorObjectResourcePathToAssetsForResource = value; }
 
     public override float SizeOfFirstCircleDetecter { get => DeffaultSizeOfFirstCircleDetecter; set => DeffaultSizeOfFirstCircleDetecter = value; }
 
     public override Collider2D[] CurrentColiders { get => base.CurrentColiders; set => base.CurrentColiders = value; }
 
 
-    public VisitorTestSaveInfo SaveVisitorTestInfo = new VisitorTestSaveInfo();
+    public VisitorMainSaveInfo MainVisitorSaveInfo = new VisitorMainSaveInfo();
 
     public int Testint;
 
-    private string VisitorObjectResourcePathToAssetsForResource = "/VisitorTestObjectAssets";
+    private string VisitorObjectResourcePathToAssetsForResource = "/VisitorAssets";
 
     private float DeffaultSizeOfFirstCircleDetecter = 2f;
 

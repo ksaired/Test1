@@ -16,7 +16,7 @@ public class TreatmentOfMainPlayerState : TreatmentOfPlayerState
     public List<PlayerMainState> DeffaultMainState = new List<PlayerMainState>()
     {
          new PlayerPauseMenuState(),
-         new TreatmentPhysicalMainState()
+         new TreatmentPhysicalPlayerMainState()
     };
 
     public override Resource StartFacade(Resource CurrentInfo)
