@@ -258,9 +258,9 @@ public class DeffaultSaveInfo
     };
     public Dictionary<string, string> GameSavePath = new Dictionary<string, string>() 
     {
-        {"Save1","GameSave24584777399" },
-        {"Save2","GameSave24584777499" },
-        {"Save3","GameSave24584777599" }
+        {"Save1","GameSave245847773999" },
+        {"Save2","GameSave245847774999" },
+        {"Save3","GameSave245847775999" }
     };
     public Dictionary<string, string> LoadMenuPaths = new Dictionary<string, string>()
     {
@@ -281,7 +281,7 @@ public class DeffaultSaveInfo
     };
 
 
-    public string LatestLoadedSave = "GameSave24584777599";
+    public string LatestLoadedSave = "GameSave245847775999";
 
     public bool IsLoadPlayerSave = false;
 }

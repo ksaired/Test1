@@ -6,7 +6,7 @@ public class TreatmentPhysicalMainState : PlayerMainState
 {
     public PlayerResource CurrentPlayerMainInfo;
 
-    private string PlayerPauseStatePath = "TreatmentPhysicalMainStatePath";
+    private string PlayerPauseStatePath = "TreatmentPhysicalMainState";
 
     public override PlayerResource CurrentPlayerInfo { get => CurrentPlayerMainInfo; set => CurrentPlayerMainInfo = value; }
 

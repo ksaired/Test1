@@ -13,7 +13,7 @@ public class TreatmentOfMainVisitorState : TreatmentOfVisitorState
     public string TreatmentOfMainVisitorPath = "/TreatmentOfMainVisitorState";
     public List<VisitorMainState> DeffaultStates = new List<VisitorMainState>()
     {
-
+       new TreatmentPhysicalVisitorMainState()
     };
     public override Resource StartFacade(Resource CurrentInfo)
     {

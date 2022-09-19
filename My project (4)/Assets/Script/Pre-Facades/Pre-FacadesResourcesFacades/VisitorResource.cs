@@ -11,7 +11,7 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
 
     public override string KindPathToAssetsForResource { get => ResourceKindPathToAssetsForResource + NPCResourceKindPathToAssetsForResource + VisitorResourceKindPathToAssetsForResource; protected set => base.KindPathToAssetsForResource = value; }
 
-    public virtual float SizeOfDetectedCircle { get; set; }
+    public virtual float SizeOfFirstDetectedCircle { get; set; }
 
     public virtual IQuestGiverSaveResource CurrentQuestGiverSaveInfo { get; set; }
     
@@ -89,9 +89,9 @@ public abstract class VisitorResource : NPCResource,IQuestGiverResource
         SaveVisitorInfo.LimitOfGivedTask = NewLimitOfGivedTask;
     }
     
-    public virtual void ChangeSizeOfDetectedCircle(float NewSizeOfDetectedCircle)
+    public virtual void ChangeSizeOfFirstDetectedCircle(float NewSizeOfFirstDetectedCircle)
     {
-        SizeOfDetectedCircle = NewSizeOfDetectedCircle;
+        SizeOfFirstDetectedCircle = NewSizeOfFirstDetectedCircle;
     }
 
 

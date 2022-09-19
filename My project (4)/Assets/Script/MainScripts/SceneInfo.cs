@@ -25,9 +25,9 @@ public static class SceneInfo
    private static DeffaultSaveInfo CurrentDeffaultSaveInfo = new DeffaultSaveInfo();
    private static DeffaultGameSaveInfo CurrentDeffaultGameSaveInfo = new DeffaultGameSaveInfo();
   
-   private static string DeffaultSettingsSavePath = "settingssave.grafeteecv18999884744789999";
-   private static string DeffaultSaveInfoPath = "save.gamessereecv18999884744789999";
-   private static string DeffaultGameSaveInfoScenePath = "GameSaveInfoScenePath178744789999";
+   private static string DeffaultSettingsSavePath = "settingssave.grafeteecv189998847447899999";
+   private static string DeffaultSaveInfoPath = "save.gamessereecv189998847447899999";
+   private static string DeffaultGameSaveInfoScenePath = "GameSaveInfoScenePath1787447899999";
    
    public static void StartScene()
    {

@@ -13,13 +13,13 @@ public class VisitorTestResource : VisitorResource
     public override string ObjectPrefabsLoadKindPath { get => base.ObjectPrefabsLoadKindPath; protected set => base.ObjectPrefabsLoadKindPath = value; }
     public override string ObjectResourcePathToAssetsForResource { get => VisitorObjectResourcePathToAssetsForResource; protected set =>VisitorObjectResourcePathToAssetsForResource = value; }
 
-    public override float SizeOfDetectedCircle { get => DeffaultSizeOfDetectedCircle; set => DeffaultSizeOfDetectedCircle = value; }
+    public override float SizeOfFirstDetectedCircle { get => DeffaultSizeOfFirstDetectedCircle; set => DeffaultSizeOfFirstDetectedCircle = value; }
 
     public VisitorTestSaveInfo SaveVisitorTestInfo = new VisitorTestSaveInfo();
 
     public int Testint;
 
-    public float DeffaultSizeOfDetectedCircle = 2f;
+    public float DeffaultSizeOfFirstDetectedCircle = 2f;
 
     private string VisitorObjectResourcePathToAssetsForResource = "/VisitorTestObjectAssets";
 

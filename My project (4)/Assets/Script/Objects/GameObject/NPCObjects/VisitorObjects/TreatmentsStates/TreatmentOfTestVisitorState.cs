@@ -15,7 +15,8 @@ public class TreatmentOfTestVisitorState : TreatmentOfVisitorState
 
     public List<VisitorState> DeffaultStates = new List<VisitorState>
     {
-       new VisitorTestState()
+      new VisitorTestState()
+       
     };
     public override Resource StartFacade(Resource CurrentInfo)
     {

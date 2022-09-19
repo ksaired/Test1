@@ -313,6 +313,7 @@ MonoBehaviour:
   DeffaultNPCSpawnerObjects:
   - {fileID: 1686938654159080233, guid: 76fbe8f7bbc7b0946baa43a712424629, type: 3}
   - {fileID: 1686938654159080233, guid: 76fbe8f7bbc7b0946baa43a712424629, type: 3}
+  - {fileID: 2262286722850094091, guid: 72573475792b4e848ab87c576cd72f11, type: 3}
 --- !u!4 &874210764
 Transform:
   m_ObjectHideFlags: 0
